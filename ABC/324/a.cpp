@@ -15,24 +15,19 @@ using namespace std;
 #define rep1(i,x,n) for (int i = (int)(x); i < (int)(n); i++)
 
 int N;
-string S;
 
 int main() {
-    cin >> N >> S;
-    bool hantei = false;
-    int ans = -1;
+    cin >> N;
+    vector<int> A(N);
+    rep(i,N) cin >> A[i];
+    bool hantei = true;
+    int a = A[0];
+    rep1(i,1,N){
+        if(a != A[i]) hantei = false; 
+    }
 
-    rep(i,N){
-        if(S[i] == 'A' && S[i+1] == 'B' && S[i+2] == 'C'){
-            hantei = true;
-            ans = i+1;
-            break; 
-        }
-    }
-    if(hantei) cout << ans << endl;
-    else{
-         cout << ans << endl;
-    }
+    if(hantei) cout << "Yes" << endl;
+    else cout << "No" << endl;
 
     return 0;
 }

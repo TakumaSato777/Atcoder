@@ -14,25 +14,37 @@ using namespace std;
 #define rep(i, n) for (int i = 0; i < (int)(n); i++)
 #define rep1(i,x,n) for (int i = (int)(x); i < (int)(n); i++)
 
-int N;
 string S;
 
 int main() {
-    cin >> N >> S;
+    
+    cin >> S;
+    int count = 0;
+    rep(i,S.size()){
+        if(S[i] == 'a') count++;
+    }
+    
+    int tuketa = 0;
     bool hantei = false;
-    int ans = -1;
-
-    rep(i,N){
-        if(S[i] == 'A' && S[i+1] == 'B' && S[i+2] == 'C'){
+    string T;
+    char a = 'a';
+    while(1){
+        T = S;
+        reverse(T.begin(),T.end());
+        if (S == T)
+        {
             hantei = true;
-            ans = i+1;
-            break; 
+            break;
         }
+
+        if(tuketa > count/2) break;
+
+        S = a + S;
+        tuketa++;
     }
-    if(hantei) cout << ans << endl;
-    else{
-         cout << ans << endl;
-    }
+
+    if(hantei) cout << "Yes" << endl;
+    else cout << "No" << endl;
 
     return 0;
 }

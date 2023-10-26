@@ -16,22 +16,22 @@ using namespace std;
 
 int N;
 string S;
-
 int main() {
     cin >> N >> S;
-    bool hantei = false;
-    int ans = -1;
-
-    rep(i,N){
-        if(S[i] == 'A' && S[i+1] == 'B' && S[i+2] == 'C'){
-            hantei = true;
-            ans = i+1;
-            break; 
+    int next,now;
+    
+    rep(i,N-1){
+        int l = 0;
+        next = i+1;
+        now = 0;
+        while(1){
+            if(next >= N) break;
+            if(S[now] == S[next]) break;
+            l++;
+            next++;
+            now++;
         }
-    }
-    if(hantei) cout << ans << endl;
-    else{
-         cout << ans << endl;
+        cout << l << endl;
     }
 
     return 0;

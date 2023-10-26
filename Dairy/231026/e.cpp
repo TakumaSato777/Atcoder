@@ -15,24 +15,25 @@ using namespace std;
 #define rep1(i,x,n) for (int i = (int)(x); i < (int)(n); i++)
 
 int N;
-string S;
 
 int main() {
-    cin >> N >> S;
-    bool hantei = false;
-    int ans = -1;
-
+    cin >> N;
+    vector<string> S(N);
+    vector<int> T(N);
+    map<string,int> map;
+    rep(i,N) cin >> S[i] >> T[i];
+    int M = 0;
+    int num = 0;
     rep(i,N){
-        if(S[i] == 'A' && S[i+1] == 'B' && S[i+2] == 'C'){
-            hantei = true;
-            ans = i+1;
-            break; 
+        if(map[S[i]] == 0){
+            map[S[i]] = T[i];
+            if(M < T[i]){
+                M = T[i];
+                num = i+1;
+            }
         }
     }
-    if(hantei) cout << ans << endl;
-    else{
-         cout << ans << endl;
-    }
+    cout << num << endl;
 
     return 0;
 }

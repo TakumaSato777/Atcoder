@@ -14,25 +14,13 @@ using namespace std;
 #define rep(i, n) for (int i = 0; i < (int)(n); i++)
 #define rep1(i,x,n) for (int i = (int)(x); i < (int)(n); i++)
 
-int N;
-string S;
+int H,W;
 
 int main() {
-    cin >> N >> S;
-    bool hantei = false;
-    int ans = -1;
-
-    rep(i,N){
-        if(S[i] == 'A' && S[i+1] == 'B' && S[i+2] == 'C'){
-            hantei = true;
-            ans = i+1;
-            break; 
-        }
-    }
-    if(hantei) cout << ans << endl;
-    else{
-         cout << ans << endl;
-    }
+    cin >> H >> W;
+    vector<string> S(H),T(H);
+    rep(i,H) cin >> S[i];
+    rep(i,H) cin >> S[i];
 
     return 0;
 }

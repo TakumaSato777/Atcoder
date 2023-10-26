@@ -15,24 +15,27 @@ using namespace std;
 #define rep1(i,x,n) for (int i = (int)(x); i < (int)(n); i++)
 
 int N;
-string S;
+string T;
 
 int main() {
-    cin >> N >> S;
-    bool hantei = false;
-    int ans = -1;
+    cin >> N >> T;
+
+    int x = 0,y = 0;
+    int pre = 1;
 
     rep(i,N){
-        if(S[i] == 'A' && S[i+1] == 'B' && S[i+2] == 'C'){
-            hantei = true;
-            ans = i+1;
-            break; 
+        if(T[i] == 'S'){
+            if(pre == 1) x++;///東なら
+            if(pre == 2) y--;///南なら
+            if(pre == 3) x--;
+            if(pre == 4) y++;
+        }
+        else{
+            if(pre <= 3) pre++;
+            else if(pre == 4) pre = 1;
         }
     }
-    if(hantei) cout << ans << endl;
-    else{
-         cout << ans << endl;
-    }
+    cout << x << " " << y << endl;
 
     return 0;
 }
